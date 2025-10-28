@@ -1,0 +1,3 @@
+[submodule "maths"]
+	path = maths
+	url = git@github.com:sebsjames/maths
