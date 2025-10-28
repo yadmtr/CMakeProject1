@@ -61,8 +61,9 @@ target_link_libraries("CMakeProject1" PRIVATE freetype)
 include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external/freetype/include)
 include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external)
  
- 
-
+#include_directories(BEFORE ${PROJECT_SOURCE_DIR}/imgui)            # Imgui
+#include_directories(BEFORE ${PROJECT_SOURCE_DIR}/imgui/backends)   #
+    
 #add_subdirectory(external/mathplot-main) 
 #target_link_libraries(CMakeProject1 mathplot-main::mathplot-main)
 #target_link_libraries(CMakeProject1 OpenGL::GL Freetype::Freetype glfw)
@@ -102,10 +103,10 @@ include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external)
 #
 
 # This is just a useful stanza for debugging of cmake variables:
-# option(DEBUG_VARIABLES OFF)
-# if(DEBUG_VARIABLES)
-#   get_cmake_property(_variableNames VARIABLES)
-#   foreach (_variableName ${_variableNames})
-#     message(STATUS "${_variableName}=${${_variableName}}")
-#   endforeach()
-# endif(DEBUG_VARIABLES)
+ option(DEBUG_VARIABLES OFF)
+ if(DEBUG_VARIABLES)
+   get_cmake_property(_variableNames VARIABLES)
+   foreach (_variableName ${_variableNames})
+     message(STATUS "${_variableName}=${${_variableName}}")
+   endforeach()
+ endif(DEBUG_VARIABLES)
