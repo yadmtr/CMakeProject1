@@ -1,0 +1,10 @@
+https://ps-group.github.io/cxx/cmake_cheatsheet
+https://www.reddit.com/r/cpp_questions/comments/1dpdmem/can_someone_explain_me_how_to_add_glfw_in_a_clean/
+https://github.com/ubawurinna/freetype-windows-binaries/tree/master
+https://json.nlohmann.me/features/arbitrary_types/#basic-usage
+
+
+
+
+
+
