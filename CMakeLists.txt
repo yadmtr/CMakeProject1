@@ -48,19 +48,44 @@ target_link_libraries("CMakeProject1" PRIVATE glfw3)
 
 
 set(MPLOT_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/external/mathplot-main" CACHE PATH "The path to mathplot")
-include_directories(BEFORE ${MPLOT_INCLUDE_PATH})         # Allows mplot/Header.h to be found
-include_directories(BEFORE ${MPLOT_INCLUDE_PATH}/maths)   # Allows sm/Header.h to be found
+#include_directories(BEFORE ${MPLOT_INCLUDE_PATH})         # Allows mplot/Header.h to be found
+target_include_directories(CMakeProject1 PRIVATE ${MPLOT_INCLUDE_PATH})
+#include_directories(BEFORE ${MPLOT_INCLUDE_PATH}/maths)   # Allows sm/Header.h to be found
+target_include_directories(CMakeProject1 PRIVATE ${MPLOT_INCLUDE_PATH}/maths)
+
 # If you want to add another directory to your include path, you can add an extra include_directories call:
 # include_directories(BEFORE ${PROJECT_SOURCE_DIR}/my_includes)
-include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external/glfw-3.4/include)
+#include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external/glfw-3.4/include)
+target_include_directories(CMakeProject1 PRIVATE ${PROJECT_SOURCE_DIR}/external/glfw-3.4/include)
 
 #find_package(Freetype REQUIRED)
 target_include_directories("${CMAKE_PROJECT_NAME}" PRIVATE external/freetype)
 target_link_directories("${CMAKE_PROJECT_NAME}" PRIVATE external/freetype)
 target_link_libraries("CMakeProject1" PRIVATE freetype)
-include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external/freetype/include)
-include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external)
+#include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external/freetype/include)
+#include_directories(BEFORE ${PROJECT_SOURCE_DIR}/external)
  
+target_include_directories(CMakeProject1 PRIVATE ${PROJECT_SOURCE_DIR}/external/freetype/include)
+target_include_directories(CMakeProject1 BEFORE PRIVATE ${PROJECT_SOURCE_DIR}/external)
+
+#Примеры замены
+#Старый вариант с  :
+#Код
+#include_directories(
+#    ${CMAKE_CURRENT_SOURCE_DIR}/include
+#)
+#add_executable(my_app main.cpp)
+#Новый вариант с target_include_directories:
+#Код
+#add_executable(my_app main.cpp)
+#target_include_directories(my_app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+
+
+
+
+
+
 #include_directories(BEFORE ${PROJECT_SOURCE_DIR}/imgui)            # Imgui
 #include_directories(BEFORE ${PROJECT_SOURCE_DIR}/imgui/backends)   #
     
